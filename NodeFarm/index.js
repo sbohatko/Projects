@@ -12,12 +12,25 @@ const replaceTemplate = (temp, product) => {
     out = out.replace(/{%FROM%}/g, product.from)
     out = out.replace(/{%NUTRIENTS%}/g, product.nutrients)
     out = out.replace(/{%QUANTITY%}/g, product.quantity)
+    out = out.replace(/{%DESCRIPTION%}/g, product.description)
     out = out.replace(/{%ID%}/g, product.id)
 
     if (!product.organic) out = out.replace(/{%NOT_ORGANIC%}/g, 'not-organic')
 
     return out;
 }
+const getQueryJson = (reqUrl) =>{
+    reqUrl = reqUrl.split('?')
+    reqUrl.shift()
+    reqUrl = reqUrl.join('?')
+    const params = new URLSearchParams(reqUrl);
+    let paramObj = {};
+    for(var value of params.keys()) {
+        paramObj[value] = params.get(value);
+    }
+    return paramObj
+}
+
 const tempOverview = fs.readFileSync(`${__dirname}/templates/template-overview.html`, 'utf-8')
 const tempCard = fs.readFileSync(`${__dirname}/templates/template-card.html`, 'utf-8')
 const tempProduct = fs.readFileSync(`${__dirname}/templates/template-product.html`, 'utf-8')
@@ -28,7 +41,9 @@ const dataObj = JSON.parse(data)
 
 
 const server = http.createServer((req, res) => {
-    const pathname = req.url
+
+    const query = getQueryJson(req.url);
+    const pathname = req.url.split('?')[0]
 
     //Overview page
     if (pathname === '/' || pathname === '/overview') {
@@ -39,7 +54,10 @@ const server = http.createServer((req, res) => {
 
         //Product page
     } else if (pathname === '/product') {
-        res.end('This is PRODUCT')
+        const product = dataObj[query.id]
+        res.writeHead(200, { 'Content-type': 'text/html' })
+        const output = replaceTemplate(tempProduct, product)
+        res.end(output)
 
         //API
     } else if (pathname === '/api') {
