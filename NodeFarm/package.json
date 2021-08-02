@@ -1,0 +1,25 @@
+{
+  "name": "nodefarm",
+  "version": "1.0.0",
+  "description": "node js pet project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sbohatko/Projects.git#master"
+  },
+  "keywords": [
+    "pet-project",
+    "node.js",
+    "express",
+    "mongo"
+  ],
+  "author": "Oleksandr Bohatko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sbohatko/Projects/issues"
+  },
+  "homepage": "https://github.com/sbohatko/Projects/tree/master#readme"
+}
