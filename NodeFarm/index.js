@@ -16,8 +16,6 @@ const dataObj = JSON.parse(data)
 const port = 8000
 const host = "127.0.0.1"
 
-
-
 const server = http.createServer((req, res) => {
 
     const query = getQueryJson(req.url);
