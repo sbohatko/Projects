@@ -1,5 +1,4 @@
 const readline = require("readline");
-const Jimp = require("jimp");
 const resizeImgs = require("./controllers/resizeImgs");
 const addWatermarks = require("./controllers/addWatermarks");
 const showWatermarks = require("./controllers/showWatermarks");
@@ -21,6 +20,7 @@ rl.on("line", (opt) => {
       resizeImgs();
       break;
     case "2":
+        rl.close();
       addWatermarks();
       break;
     case "3":

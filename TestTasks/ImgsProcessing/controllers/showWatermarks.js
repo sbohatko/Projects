@@ -5,5 +5,6 @@ module.exports = function readWatermarksNames() {
     if (err) throw err;
     files.shift();
     console.log("Availible watermarks:\n" + files.join("\n"));
+    return files
   });
 };
