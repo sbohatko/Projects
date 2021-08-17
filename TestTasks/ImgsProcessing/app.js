@@ -1,36 +1,36 @@
-var readline = require("readline");
+const readline = require("readline");
+const Jimp = require("jimp");
+const resizeImgs = require("./controllers/resizeImgs");
+const addWatermarks = require("./controllers/addWatermarks");
+const showWatermarks = require("./controllers/showWatermarks");
 
-function resizeImgs() {
-  console.log("IT WORKS RESIZING");
-}
-function addWatersign() {
-  console.log("IT WORKS WATERSIGN");
-}
 function exitConsole() {
   console.log("App is closing...");
-  rl.close()
+  rl.close();
 }
 
 var rl = readline.createInterface(process.stdin, process.stdout);
 
 rl.setPrompt(
-  `Which option you want to be proceed?\n\n1. Resize imgs\n2. Add watersign\n0. Exit\n\nChoose option: `
+  `Which option you want to be proceed?\n\n1. Resize imgs\n2. Add watermarks\n3. Availible watermarks\n0. Exit\n\nChoose option: `
 );
 rl.prompt();
 rl.on("line", (opt) => {
   switch (opt) {
-    case '1':
+    case "1":
       resizeImgs();
       break;
-    case '2':
-      addWatersign();
+    case "2":
+      addWatermarks();
       break;
-    case '0':
+    case "3":
+      showWatermarks();
+      break;
+    case "0":
       exitConsole();
       break;
     default:
       console.log("Invalid input");
       break;
   }
-
 });
