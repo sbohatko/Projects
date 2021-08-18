@@ -20,7 +20,6 @@ rl.on("line", (opt) => {
       resizeImgs();
       break;
     case "2":
-        rl.close();
       addWatermarks();
       break;
     case "3":

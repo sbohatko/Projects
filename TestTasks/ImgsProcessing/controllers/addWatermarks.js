@@ -1,5 +1,4 @@
 const Jimp = require("jimp");
-const readline = require("readline");
 const fs = require("fs");
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
@@ -25,8 +24,14 @@ module.exports = async function addWatermarks(
         opacitySource: 0.5,
       });
       //Saves the image into the file system
-      await img.writeAsync(`watermarked_images/${imgKey}.png`);
-    })
+      await img.writeAsync(`watermarked_images/${imgKey}`);
+    }),
+    console.log("Loading images...")
+  ).catch((err) => {
+    console.log(err);
+  });
+  console.log(
+    "Great! 🥳\nAll images with watermark are in 'watermarked_images' folder! "
   );
 };
 

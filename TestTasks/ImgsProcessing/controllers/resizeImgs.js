@@ -13,7 +13,13 @@ module.exports = async function resizeImgs() {
       img.resize(process.env.HEIGHT_RESIZE * 1, process.env.WIDTH_RESIZE * 1);
       //Saves the image into the file system
       await img.writeAsync(`resized_images/${imgKey}.png`);
-    })
+    }),
+    console.log("Resizing images...")
+  ).catch((err) => {
+    console.log(err);
+  });
+  console.log(
+    `Great! 🥳\nAll images has been resized to ${process.env.HEIGHT_RESIZE}x${process.env.WIDTH_RESIZE}, and saved in \'resized_images\' folder! `
   );
 };
 

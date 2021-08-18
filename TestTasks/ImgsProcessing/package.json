@@ -4,7 +4,7 @@
   "description": "parallel img processing test task",
   "main": "app.js",
   "scripts": {
-    "start": "npm run app.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/sbohatko/Projects/tree/master#readme",
   "dependencies": {
+    "async": "^3.2.1",
     "config": "^3.3.6",
     "config.env": "^1.1.0",
     "dotenv": "^10.0.0",
