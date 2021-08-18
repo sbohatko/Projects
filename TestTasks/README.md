@@ -15,6 +15,7 @@ There is 4 operations:
 
 ***
 default Height and Weight is 150 pixels
+
 default Watermark is watermark_sample.png
 *** 
 If you will resize images, they will be saved into resized_images folder
