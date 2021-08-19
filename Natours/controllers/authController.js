@@ -46,7 +46,32 @@ const login = catchAsync(async (req, res, next) => {
     token,
   });
 });
+
+const protect = catchAsync(async (req, res, next) => {
+  // 1) Get token and check if it`s there
+  let token;
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.startsWith('Bearer')
+  ) {
+    token = req.headers.authorization.split(' ')[1];
+  }
+
+  if (!token) {
+    return next(
+      new AppError('You are not logged in! Please log in to get access', 401)
+    );
+  }
+  // 2) Verification token
+
+  // 3) Check if user still exists
+
+  // 4) Check if user changed password after the token was issued
+
+  next();
+});
 module.exports = {
+  protect,
   signup,
   login,
 };
