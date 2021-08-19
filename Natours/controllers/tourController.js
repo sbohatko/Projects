@@ -23,7 +23,7 @@ const getAllTours = catchAsync(async (req, res, next) => {
     status: 'success',
     results: tours.length,
     data: {
-      tours: tours,
+      tours,
     },
   });
 });
