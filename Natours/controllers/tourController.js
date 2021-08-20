@@ -50,7 +50,11 @@ const createTour = catchAsync(async (req, res, next) => {
   });
 });
 const deleteTour = catchAsync(async (req, res, next) => {
-  const tour = await Tour.findByIdAndDelete(req.params.id);
+  const tour = await Tour.findByIdAndDelete(req.params.id, (err) => {
+    if (err) console.log(err);
+  });
+  console.log(req.params.id);
+  console.log(tour);
 
   if (!tour) {
     return next(new AppError('No tour found with that ID', 404));
