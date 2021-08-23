@@ -51,7 +51,7 @@ const createTour = catchAsync(async (req, res, next) => {
 });
 const deleteTour = catchAsync(async (req, res, next) => {
   const tour = await Tour.deleteOne({ _id: req.params.id }, (err) => {
-    if (err) console.log(err);
+    if (err) return next(new AppError('Methsod error', 500));
   });
   if (!tour.deletedCount) {
     return next(new AppError('No tour found with that ID', 404));
