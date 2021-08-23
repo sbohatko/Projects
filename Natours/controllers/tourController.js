@@ -50,15 +50,21 @@ const createTour = catchAsync(async (req, res, next) => {
   });
 });
 const deleteTour = catchAsync(async (req, res, next) => {
-  const tour = await Tour.findByIdAndDelete(req.params.id, (err) => {
+  const tour = await Tour.deleteOne({ _id: req.params.id }, (err) => {
     if (err) console.log(err);
   });
-  console.log(req.params.id);
-  console.log(tour);
-
-  if (!tour) {
+  if (!tour.deletedCount) {
     return next(new AppError('No tour found with that ID', 404));
   }
+  // const tour = await Tour.findByIdAndDelete(req.params.id, (err, data) => {
+  //   if (err) console.log(err);
+  //   console.log(data);
+  // });
+
+  // if (!tour) {
+  //   return next(new AppError('No tour found with that ID', 404));
+  // }
+
   res.status(204).json({
     status: 'success',
     data: null,
@@ -150,12 +156,12 @@ const getMouthlyPlan = catchAsync(async (req, res, next) => {
 });
 
 module.exports = {
+  deleteTour,
   getMouthlyPlan,
   getTourStats,
   aliasTopTours,
   getAllTours,
   getTour,
   createTour,
-  deleteTour,
   updateTour,
 };
