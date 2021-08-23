@@ -31,7 +31,6 @@ const updateMe = catchAsync(async (req, res, next) => {
       )
     );
   }
-
   // 2) Filtered out unwanted fields names that are not allowed to be updated
   const filteredBody = filterObj(req.body, 'name', 'email');
 
@@ -46,6 +45,14 @@ const updateMe = catchAsync(async (req, res, next) => {
     data: {
       user: updatedUser,
     },
+  });
+});
+const deleteMe = catchAsync(async (req, res, next) => {
+  await User.findByIdAndUpdate(req.user.id, { active: false });
+
+  res.status(204).json({
+    status: 'success',
+    data: null,
   });
 });
 const createUser = (req, res) => {
@@ -73,8 +80,9 @@ const deleteUser = (req, res) => {
   });
 };
 module.exports = {
-  updateMe,
   getAllUsers,
+  updateMe,
+  deleteMe,
   createUser,
   getUser,
   updateUser,
