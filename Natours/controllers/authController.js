@@ -54,7 +54,7 @@ const login = catchAsync(async (req, res, next) => {
 });
 
 const protect = catchAsync(async (req, res, next) => {
-  // 1) Get token and check if it`s there
+  // 1) Getting token and check of it's there
   let token;
   if (
     req.headers.authorization &&
@@ -65,9 +65,10 @@ const protect = catchAsync(async (req, res, next) => {
 
   if (!token) {
     return next(
-      new AppError('You are not logged in! Please log in to get access', 401)
+      new AppError('You are not logged in! Please log in to get access.', 401)
     );
   }
+
   // 2) Verification token
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
 
