@@ -1,5 +1,4 @@
 const Tour = require('../models/tourModel');
-const APIFeatures = require('../utils/apiFeatures');
 const catchAsync = require('../utils/catchAsync');
 const factory = require('./handleFactory');
 
@@ -10,23 +9,6 @@ const aliasTopTours = (req, res, next) => {
   next();
 };
 
-const getAllTours = catchAsync(async (req, res, next) => {
-  // EXECUTE QUERY
-  const features = new APIFeatures(Tour.find(), req.query)
-    .filter()
-    .sort()
-    .limitFields()
-    .paginate();
-  const tours = await features.query;
-  // SEND RESPONSE
-  res.status(200).json({
-    status: 'success',
-    results: tours.length,
-    data: {
-      tours,
-    },
-  });
-});
 const getTourStats = catchAsync(async (req, res, next) => {
   const stats = await Tour.aggregate([
     { $match: { ratingAverage: { $gte: 4.5 } } },
@@ -98,11 +80,11 @@ const getMouthlyPlan = catchAsync(async (req, res, next) => {
 });
 
 module.exports = {
-  deleteTour: factory.deleteOne(Tour),
   getMouthlyPlan,
   getTourStats,
   aliasTopTours,
-  getAllTours,
+  deleteTour: factory.deleteOne(Tour),
+  getAllTours: factory.getAll(Tour),
   getTour: factory.getOne(Tour, { path: 'reviews' }),
   createTour: factory.createOne(Tour),
   updateTour: factory.updateOne(Tour),
