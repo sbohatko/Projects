@@ -40,16 +40,6 @@ const getTour = catchAsync(async (req, res, next) => {
     },
   });
 });
-
-const createTour = catchAsync(async (req, res, next) => {
-  const newTour = await Tour.create(req.body);
-  res.status(201).json({
-    status: 'success',
-    data: {
-      tour: newTour,
-    },
-  });
-});
 const getTourStats = catchAsync(async (req, res, next) => {
   const stats = await Tour.aggregate([
     { $match: { ratingAverage: { $gte: 4.5 } } },
@@ -127,6 +117,6 @@ module.exports = {
   aliasTopTours,
   getAllTours,
   getTour,
-  createTour,
+  createTour: factory.createOne(Tour),
   updateTour: factory.updateOne(Tour),
 };

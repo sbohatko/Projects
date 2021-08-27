@@ -1,6 +1,16 @@
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
+const createOne = (Model) =>
+  catchAsync(async (req, res, next) => {
+    const newDoc = await Model.create(req.body);
+    res.status(201).json({
+      status: 'success',
+      data: {
+        data: newDoc,
+      },
+    });
+  });
 const deleteOne = (Model) =>
   catchAsync(async (req, res, next) => {
     const doc = await Model.findByIdAndDelete(req.params.id);
@@ -30,7 +40,9 @@ const updateOne = (Model) =>
       },
     });
   });
+
 module.exports = {
+  createOne,
   deleteOne,
   updateOne,
 };
