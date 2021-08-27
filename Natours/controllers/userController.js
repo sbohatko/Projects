@@ -44,17 +44,22 @@ const deleteMe = catchAsync(async (req, res, next) => {
     data: null,
   });
 });
+
 const createUser = (req, res) => {
   res.status(500).json({
     status: 'error',
     message: 'This route not yet defined Please use /signup instead',
   });
 };
-
+const getMe = (req, res, next) => {
+  req.params.id = req.user.id;
+  next();
+};
 module.exports = {
   updateMe,
   deleteMe,
   createUser,
+  getMe,
   getAllUsers: factory.getAll(User),
   getUser: factory.getOne(User),
   //do not updates password with this
