@@ -59,13 +59,7 @@ const deleteMe = catchAsync(async (req, res, next) => {
 const createUser = (req, res) => {
   res.status(500).json({
     status: 'error',
-    message: 'This route not yet defined',
-  });
-};
-const getUser = (req, res) => {
-  res.status(500).json({
-    status: 'error',
-    message: 'This route not yet defined',
+    message: 'This route not yet defined Please use /signup instead',
   });
 };
 
@@ -74,7 +68,7 @@ module.exports = {
   updateMe,
   deleteMe,
   createUser,
-  getUser,
+  getUser: factory.getOne(User),
   //do not updates password with this
   updateUser: factory.updateOne(User),
   deleteUser: factory.deleteOne(User),
