@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/sbohatko/Projects/tree/master#readme",
   "dependencies": {
-    "async": "^3.2.1",
+    "async": "^3.2.2",
     "config": "^3.3.6",
     "config.env": "^1.1.0",
     "dotenv": "^10.0.0",
