@@ -1,0 +1,68 @@
+{
+  "name": "meredian",
+  "version": "1.0.0",
+  "description": "learning node, express, and mongo",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "start:prod": "NODE_ENV=production nodemon server.js",
+    "debug": "ndb server.js",
+    "gcp-build": "npm i npm-install-peers"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sbohatko/Projects.git#master"
+  },
+  "keywords": [
+    "node",
+    "mongo",
+    "express"
+  ],
+  "author": "Oleksandr Bohatko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sbohatko/Projects/issues"
+  },
+  "homepage": "https://github.com/sbohatko/Projects/tree/master#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express-mongo-sanitize": "^2.1.0",
+    "express-rate-limit": "^5.3.0",
+    "helmet": "^4.6.0",
+    "hpp": "^0.2.3",
+    "html-to-text": "^8.1.0",
+    "iconv-lite": "^0.6.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^8.0.3",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.4",
+    "nodemailer": "^6.6.3",
+    "nodemon": "^2.0.20",
+    "pug": "^3.0.2",
+    "sharp": "^0.29.3",
+    "slugify": "^1.6.0",
+    "stripe": "^7.0.0",
+    "validator": "^13.6.0",
+    "xss-clean": "^0.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "prettier": "^2.3.2"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  }
+}
